@@ -1,0 +1,24 @@
+FROM node:16
+
+RUN yarn global add lerna
+
+# RUN npm install --production
+WORKDIR /usr/src/app
+
+COPY ./package.json ./package.json
+COPY ./lerna.json ./lerna.json
+COPY ./packages ./packages
+COPY ./apps/server/package.json ./apps/server/package.json
+
+RUN lerna link
+RUN lerna bootstrap
+
+COPY ./apps/server/tsconfig.json ./apps/server/tsconfig.json
+COPY ./apps/server/.env.development ./apps/server/.env.development
+COPY ./apps/server/src ./apps/server/src
+
+WORKDIR /usr/src/app/apps/server
+
+RUN yarn build
+
+CMD [ "yarn", "dev" ]

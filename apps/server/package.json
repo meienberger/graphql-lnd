@@ -1,0 +1,49 @@
+{
+  "name": "graphql-lnd",
+  "version": "1.0.0",
+  "description": "A production ready GraphQL api for lnd",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild --bundle src/server.ts --outdir=dist --allow-overwrite --sourcemap --platform=node --analyze=verbose --external:./node_modules/* --format=esm",
+    "build:watch": "esbuild --watch --bundle src/server.ts --outdir=./dist --platform=node --allow-overwrite --sourcemap --external:./node_modules/* --format=esm",
+    "start:dev": "NODE_ENV=development nodemon --watch dist dist/server.js --trace-deprecation",
+    "dev": "concurrently \"yarn build:watch\" \"yarn start:dev\"",
+    "lint": "eslint src/**/*.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-log": "^1.1.0",
+    "apollo-server-core": "^3.6.4",
+    "apollo-server-express": "^3.6.4",
+    "class-validator": "^0.13.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "graphql": "^15.3.0",
+    "lightning": "^5.8.3",
+    "ln-pathfinding": "^1.0.2",
+    "p-iteration": "^1.1.8",
+    "pg": "^8.7.3",
+    "redis": "^4.0.4",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.45",
+    "winston": "^3.6.0",
+    "winston-telegram": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "concurrently": "^7.0.0",
+    "esbuild": "^0.14.25",
+    "esbuild-node-externals": "^1.4.1",
+    "esbuild-node-tsc": "^1.8.5",
+    "eslint-config": "*",
+    "nodemon": "^2.0.15",
+    "tsconfig": "*",
+    "type-fest": "^2.12.0",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6"
+  }
+}

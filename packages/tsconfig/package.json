@@ -1,0 +1,19 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Nicolas Meienberger <nicolas.meienberger@alayagood.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/base.json",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
