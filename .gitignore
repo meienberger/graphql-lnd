@@ -5,3 +5,4 @@ tsconfig.tsbuildinfo
 .env
 .env.development
 data
+*.log
